@@ -4,6 +4,7 @@ from utils.time_manager import TimeManager
 from launch import launch
 import pytest
 import os
+from config import ALLURE_CONFIG
 
 if __name__ == '__main__':
     # 获取统一的时间戳
@@ -18,8 +19,8 @@ if __name__ == '__main__':
 
     # 生成报告路径
     #TODO修改成配置文件读取形式
-    allure_report = "./allure_report"
-    allure_result = "./allure_result"
+    allure_report = ALLURE_CONFIG['REPORT_DIR']
+    allure_result = ALLURE_CONFIG['RESULT_DIR']
 
     # # 运行pytest主运行程序
     # pytest.main(['-v'])

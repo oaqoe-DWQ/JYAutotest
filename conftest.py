@@ -5,6 +5,7 @@ import logging
 import zipfile
 import shutil
 from datetime import datetime
+from config import AIRTEST_CONFIG, ALLURE_CONFIG
 
 # 设置日志
 logging.basicConfig(level=logging.INFO)
@@ -27,7 +28,7 @@ def pytest_runtest_makereport(item, call):
                 return
                 
             # 构造报告路径
-            base_export_dir = os.path.join(os.getcwd(), "export_dir", current_file_name, timestamp)
+            base_export_dir = os.path.join(AIRTEST_CONFIG['EXPORT_DIR'], current_file_name, timestamp)
             # 添加以测试文件名（不带扩展名）命名的日志目录
             test_name = os.path.splitext(current_file_name)[0]
             export_dir = os.path.join(base_export_dir, f"{test_name}.log")
