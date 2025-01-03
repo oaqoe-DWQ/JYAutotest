@@ -5,6 +5,12 @@ from launch import launch
 import pytest
 import os
 from config import ALLURE_CONFIG
+import sys
+import logging
+
+# 设置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
     # 获取统一的时间戳
@@ -13,8 +19,12 @@ if __name__ == '__main__':
     os.environ['TEST_TIMESTAMP'] = timestamp
     
     
-    # 启动连接设备模块
-    launch()
+    # 启动连接设备模块（可以指定设备类型）
+    try:
+        launch(device_type='IOS')  # 或 'ANDROID' 或 'WINDOWS'
+    except SystemExit:
+        logger.error("设备连接失败，终止测试执行")
+        sys.exit(1)
 
 
     # 生成报告路径

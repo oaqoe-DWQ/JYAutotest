@@ -18,4 +18,23 @@ AIRTEST_CONFIG = {
 LOG_CONFIG = {
     'LEVEL': 'INFO',
     'FORMAT': '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+}
+
+# 设备连接配置
+DEVICE_CONFIG = {
+    'IOS': {
+        'uri': "iOS:///http://127.0.0.1:8100",
+        'options': {}
+    },
+    'ANDROID': {
+        'uri': "Android:///",  # 默认连接
+        'options': {
+            'cap_method': 'JAVACAP',
+            'touch_method': 'ADBTOUCH'
+        }
+    },
+    'WINDOWS': {
+        'uri': "Windows:///",
+        'options': {}
+    }
 } 
