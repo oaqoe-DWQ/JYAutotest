@@ -53,7 +53,7 @@ def test_hello():
     except Exception as e:
         raise Exception("脚本执行错误，退出")
     finally:
-        now = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
+        now =os.environ.get('TEST_TIMESTAMP')
         current_file_name = os.path.basename(__file__)
         report_path_name = now + '_' + current_file_name
         log_root = os.path.join(os.path.dirname(__file__), 'log')

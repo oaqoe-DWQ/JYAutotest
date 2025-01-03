@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 __author__ = "zhangxiaoguo"
-
+from utils.time_manager import TimeManager
 from launch import launch
 import pytest
 import os
 
 if __name__ == '__main__':
+    # 获取统一的时间戳
+    timestamp = TimeManager.get_timestamp()
+    # 设置为环境变量，供所有测试用例使用
+    os.environ['TEST_TIMESTAMP'] = timestamp
+    
+    
     # 启动连接设备模块
     launch()
 
