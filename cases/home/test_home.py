@@ -6,7 +6,7 @@ import pytest
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 from airtest.report.report import simple_report,LogToHtml
-
+from datetime import datetime
 
 @allure.feature("测试HOME快捷键")
 def test_home():
@@ -18,9 +18,9 @@ def test_home():
     except Exception as e:
         raise Exception("脚本执行错误，退出")
     finally:
-        now =os.environ.get('TEST_TIMESTAMP')
+        now =os.environ.get('TEST_TIMESTAMP', datetime.now().strftime("%Y-%m-%d_%H_%M_%S"))
         current_file_name = os.path.basename(__file__)
-        report_path_name = now + '_' + current_file_name
+        # report_path_name = now + "_" + current_file_name
         log_root = os.path.join(os.path.dirname(__file__), 'log')
         export_dir = os.path.join("./export_dir", current_file_name, now)
         tmp = LogToHtml(script_root=__file__, log_root=log_root, export_dir=export_dir,
