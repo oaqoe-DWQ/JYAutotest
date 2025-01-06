@@ -1,4 +1,5 @@
 import os
+import logging
 
 # 项目根目录
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -38,3 +39,22 @@ DEVICE_CONFIG = {
         'options': {}
     }
 } 
+
+
+# 日志配置
+LOG_CONFIG = {
+    'LEVEL': logging.INFO,
+    'FORMAT': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    'HANDLERS': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': logging.INFO,
+        },
+        # 如果需要文件日志，可以在这里添加
+        # 'file': {
+        #     'class': 'logging.FileHandler',
+        #     'filename': 'test.log',
+        #     'level': logging.INFO,
+        # }
+    }
+}

@@ -6,12 +6,12 @@ import pytest
 import os
 from config import ALLURE_CONFIG
 import sys
-import logging
 import argparse
+from utils.logger import setup_logger
 
 # 设置日志
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+
+logger = setup_logger(__name__)
 
 def parse_args():
     """解析命令行参数"""
@@ -35,6 +35,7 @@ if __name__ == '__main__':
     timestamp = TimeManager.get_timestamp()
     # 设置为环境变量，供所有测试用例使用
     os.environ['TEST_TIMESTAMP'] = timestamp
+    logger.info(f"测试开始时间: {timestamp}")
     
     # 启动连接设备模块
     try:
@@ -48,6 +49,12 @@ if __name__ == '__main__':
     allure_result = ALLURE_CONFIG['RESULT_DIR']
 
     # 运行测试并生成报告
-    pytest.main(['-v', '--alluredir', allure_result, '--clean-alluredir'])
+    pytest.main([
+        '-v',
+        '--capture=no',  # 允许输出到终端
+        '--log-cli-level=INFO',  # 设置命令行日志级别
+        '--alluredir', allure_result,
+        '--clean-alluredir'
+    ])
     os.system("allure generate -c -o %s " % (allure_report))
     os.system('allure serve %s' % allure_result)

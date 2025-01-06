@@ -6,10 +6,10 @@ import zipfile
 import shutil
 from datetime import datetime
 from config import AIRTEST_CONFIG, ALLURE_CONFIG
+from utils.logger import setup_logger
 
 # 设置日志
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):

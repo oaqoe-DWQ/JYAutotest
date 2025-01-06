@@ -6,11 +6,10 @@ from airtest.core.api import *
 from airtest.core.api import device as get_device
 from airtest.cli.parser import cli_setup
 from config import DEVICE_CONFIG
-import logging
+from utils.logger import setup_logger
 
 # 设置日志
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = setup_logger(__name__)
 
 def launch(device_type='IOS'):
     """
