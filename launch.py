@@ -5,8 +5,10 @@ import sys
 from airtest.core.api import *
 from airtest.core.api import device as get_device
 from airtest.cli.parser import cli_setup
-from config import DEVICE_CONFIG
+from config import DEVICE_CONFIG, BASE_DIR
 from utils.logger import setup_logger
+import os
+from datetime import datetime
 
 # 设置日志
 logger = setup_logger(__name__)
@@ -33,6 +35,14 @@ def launch(device_type='IOS'):
             
         device_conf = DEVICE_CONFIG[device_type]
         
+        # 使用环境变量中的时间戳
+        timestamp = os.environ.get('TEST_TIMESTAMP', datetime.now().strftime("%Y-%m-%d_%H_%M_%S"))
+        
+        # 创建日志目录（与 test_home.py 保持一致）
+        current_file_name = os.path.basename(__file__)
+        log_dir = os.path.join(os.path.dirname(__file__), "log")
+        os.makedirs(log_dir, exist_ok=True)
+        
         # 先检查是否已有设备连接
         try:
             current_device = get_device()
@@ -45,11 +55,22 @@ def launch(device_type='IOS'):
         # 连接设备
         logger.info(f"正在连接 {device_type} 设备: {device_conf['uri']}")
         try:
-            # 直接使用 connect_device 而不是 auto_setup
-            connect_device(
-                device_conf['uri'],
-                **device_conf.get('options', {})
-            )
+            # 使用 auto_setup 进行设备连接
+            if not cli_setup():
+                # 获取设备选项
+                device_options = device_conf.get('options', {})
+                
+                # 使用 auto_setup 连接设备
+                # auto_setup(
+                #     __file__,
+                #     logdir=log_dir,  # 使用统一的日志目录
+                #     devices=[
+                #         f"{device_conf['uri']}?{','.join([f'{k}={v}' for k,v in device_options.items()])}" if device_options else device_conf['uri']
+                #     ],
+                #     project_root=os.path.dirname(__file__)
+                # )
+
+                auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
             
             # 验证设备连接
             current_device = get_device()
