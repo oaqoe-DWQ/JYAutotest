@@ -38,11 +38,11 @@ if __name__ == '__main__':
     logger.info(f"测试开始时间: {timestamp}")
     
     # 启动连接设备模块
-    try:
-        launch(device_type=device_type)
-    except SystemExit:
-        logger.error("设备连接失败，终止测试执行")
-        sys.exit(1)
+    # try:
+    #     launch(device_type=device_type)
+    # except SystemExit:
+    #     logger.error("设备连接失败，终止测试执行")
+    #     sys.exit(1)
 
     # 生成报告路径
     allure_report = ALLURE_CONFIG['REPORT_DIR']
