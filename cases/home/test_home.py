@@ -14,9 +14,9 @@ logger = setup_logger(__name__)
 
 
 @allure.feature("测试HOME快捷键")
-def test_home():
-    if not cli_setup():
-        auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
+def test_home(setup_test):
+    # if not cli_setup():
+    #     auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
     
     logger.info(f"开始执行用例: {os.path.basename(__file__)}")
     try:
@@ -36,6 +36,7 @@ def test_home():
                         plugins=None)
         # tmp.home(output_file=log_root + "result.html")
         tmp.report()
+        logger.info(f"用例执行完成: {os.path.basename(__file__)}")
 
 #NOTE:如果想以纯python的方式调试该单个脚本，请添加下面的内容
 if __name__ == "__main__":

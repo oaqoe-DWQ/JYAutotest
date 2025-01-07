@@ -7,9 +7,32 @@ import shutil
 from datetime import datetime
 from config import AIRTEST_CONFIG, ALLURE_CONFIG
 from utils.logger import setup_logger
+from utils.device_manager import DeviceManager
 
 # 设置日志
 logger = setup_logger(__name__)
+
+
+@pytest.fixture(scope="module")
+def setup_test(request):
+    """测试环境初始化，在测试开始时连接设备，在测试结束后断开设备"""
+    # 获取当前测试文件路径
+    test_file = request.module.__file__
+    test_dir = os.path.dirname(test_file)
+    log_dir = os.path.join(test_dir, 'log')
+    
+    # 确保日志目录存在
+    os.makedirs(log_dir, exist_ok=True)
+    
+    # 初始化设备
+    DeviceManager.init_device(test_file, log_dir)
+    
+    yield
+    
+    # 测试结束后断开设备
+    DeviceManager.disconnect()
+
+
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
