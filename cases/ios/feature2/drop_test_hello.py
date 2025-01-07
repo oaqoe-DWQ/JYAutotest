@@ -21,31 +21,31 @@ def test_hello():
         print(os.getcwd())
 
         keyevent("HOME")
-        touch(Template(r"cases/hello/tpl1735555105458.png", record_pos=(-0.11, 0.214), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555105458.png", record_pos=(-0.11, 0.214), resolution=(1242, 2688)))
         sleep(2)
 
 
-        touch(Template(r"cases/hello/tpl1735555141044.png", record_pos=(-0.393, 0.939), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555141044.png", record_pos=(-0.393, 0.939), resolution=(1242, 2688)))
         sleep(2)
 
-        touch(Template(r"cases/hello/tpl1735555159076.png", record_pos=(0.332, -0.92), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555159076.png", record_pos=(0.332, -0.92), resolution=(1242, 2688)))
         sleep(2)
 
         text("张国栋")
         sleep(2)
 
-        wait(Template(r"cases/hello/tpl1735555209082.png", record_pos=(-0.085, -0.452), resolution=(1242, 2688)))
-        touch(Template(r"cases/hello/tpl1735555215942.png", record_pos=(-0.249, -0.465), resolution=(1242, 2688)))
+        wait(Template(r"./tpl1735555209082.png", record_pos=(-0.085, -0.452), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555215942.png", record_pos=(-0.249, -0.465), resolution=(1242, 2688)))
         sleep(2)
 
-        touch(Template(r"cases/hello/tpl1735555237908.png", record_pos=(-0.05, 0.94), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555237908.png", record_pos=(-0.05, 0.94), resolution=(1242, 2688)))
         text("hello")
         sleep(2)
-        touch(Template(r"cases/hello/tpl1735555268161.png", record_pos=(0.375, 0.834), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555268161.png", record_pos=(0.375, 0.834), resolution=(1242, 2688)))
 
 
-        touch(Template(r"cases/hello/tpl1735555278609.png", record_pos=(-0.434, -0.929), resolution=(1242, 2688)))
-        touch(Template(r"cases/hello/tpl1735555288524.png", record_pos=(0.422, -0.935), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555278609.png", record_pos=(-0.434, -0.929), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555288524.png", record_pos=(0.422, -0.935), resolution=(1242, 2688)))
 
 
         keyevent("HOME")

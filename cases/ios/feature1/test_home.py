@@ -21,7 +21,7 @@ def test_home(setup_test):
     logger.info(f"开始执行用例: {os.path.basename(__file__)}")
     try:
         keyevent("HOME")
-        touch(Template(r"cases/home/tpl1735555105458.png", record_pos=(-0.11, 0.214), resolution=(1242, 2688)))
+        touch(Template(r"./tpl1735555105458.png", record_pos=(-0.11, 0.214), resolution=(1242, 2688)))
         sleep(2)
         keyevent("HOME")
     except Exception as e:
