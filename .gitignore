@@ -5,3 +5,4 @@ allure_report/*
 allure_result/*
 export_dir/*
 cases/*/log
+cases/*/*/log
