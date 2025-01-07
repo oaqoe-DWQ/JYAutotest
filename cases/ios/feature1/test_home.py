@@ -27,19 +27,27 @@ def test_home(setup_test):
     except Exception as e:
         raise Exception("脚本执行错误，退出")
     finally:
+        # 获取时间戳和脚本名
         now = os.environ.get('TEST_TIMESTAMP', datetime.now().strftime("%Y-%m-%d_%H_%M_%S"))
-        current_file_name = os.path.basename(__file__)
-        log_root = os.path.join(os.path.dirname(__file__), 'log')
-        export_dir = os.path.join("./export_dir", current_file_name, now)
-        tmp = LogToHtml(script_root=__file__, log_root=log_root, export_dir=export_dir,
-                          lang='en',
-                        plugins=None)
-        # tmp.home(output_file=log_root + "result.html")
+        script_name = os.path.splitext(os.path.basename(__file__))[0]
+        
+        # 构建日志和导出路径
+        log_root = os.path.join(os.path.dirname(__file__), 'log', script_name)
+        export_dir = os.path.join("./export_dir", script_name, now)
+        
+        # 生成报告
+        tmp = LogToHtml(
+            script_root=__file__,
+            log_root=log_root,
+            export_dir=export_dir,
+            lang='en',
+            plugins=None
+        )
         tmp.report()
-        logger.info(f"用例执行完成: {os.path.basename(__file__)}")
+        logger.info(f"用例执行完成: {script_name}")
 
 #NOTE:如果想以纯python的方式调试该单个脚本，请添加下面的内容
-if __name__ == "__main__":
-    # if not cli_setup():
-    #     auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
-    test_home()
+# if __name__ == "__main__":
+#     # if not cli_setup():
+#     #     auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
+#     test_home()
