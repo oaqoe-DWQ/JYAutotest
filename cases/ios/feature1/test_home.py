@@ -33,8 +33,7 @@ def test_home(setup_test):
         
         # 构建日志和导出路径
         log_root = os.path.join(os.path.dirname(__file__), 'log', script_name)
-        export_dir = os.path.join("./export_dir", script_name, now)
-        
+        export_dir = os.path.join("./export_dir", f"{script_name}.py", now)        
         # 生成报告
         tmp = LogToHtml(
             script_root=__file__,
