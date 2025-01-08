@@ -58,3 +58,9 @@ LOG_CONFIG = {
         # }
     }
 }
+
+# 安装包下载地址
+APP_DOWNLOAD_URL = {
+    'IPA_DOWNLOAD_URL': "https://bj-app.vvtechnology.cn/dist/ios/pool/html/",
+    'ANDROID_DOWNLOAD_URL': "",
+}
