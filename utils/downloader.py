@@ -132,6 +132,7 @@ if __name__ == "__main__":
     # 示例使用
     try:
         version = "2.9.24.19848"
+        version = "2.9.26.19736"
         downloaded_file = download_app(version)
         logger.info(f"文件已下载到: {downloaded_file}")
     except Exception as e:
