@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+__author__ = "zhangxiaoguo"
+
 # -*- coding: utf-8 -*-
 __author__ = "zhangxiaoguo"
 from utils.time_manager import TimeManager

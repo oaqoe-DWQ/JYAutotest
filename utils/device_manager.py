@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+__author__ = "zhangxiaoguo"
+
 from airtest.core.api import *
 from config import DEVICE_CONFIG
 from utils.logger import setup_logger
