@@ -5,6 +5,8 @@ airtest start_app()方法在ios17以上失效，需要调用wda实现
 """
 __author__ = "zhangxiaoguo"
 
+#TODO: ios17以上、及以下需要分开实现，ios17以下使用aritest原生api
+
 import wda
 import time
 import subprocess
