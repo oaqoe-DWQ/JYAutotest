@@ -17,7 +17,7 @@ from airtest.core.android.android import Android
 from airtest.core.win.win import Windows
 from poco.drivers.ios import iosPoco
 from poco.drivers.android.uiautomation import AndroidUiautomationPoco
-from wda_startapp import start_ios_app_by_wda
+from ios import start_ios_app_by_wda
 
 
 class BaseTest:
@@ -245,3 +245,48 @@ class BaseTest:
         except Exception as e:
             print(f"执行shell命令失败: {str(e)}")
             return ""
+
+    def paste(self, text: str, enter: bool = True) -> bool:
+        """
+        粘贴文本（通常用于处理包含特殊字符的文本）
+        
+        Args:
+            text: 要粘贴的文本
+            enter: 是否在末尾发送回车键
+        """
+        try:
+            self.device.paste(text, enter)
+            return True
+        except Exception as e:
+            print(f"粘贴文本失败: {str(e)}")
+            return False
+
+    def push(self, src: str, dst: str) -> bool:
+        """
+        推送文件到设备
+        
+        Args:
+            src: 本地文件路径
+            dst: 设备上的目标路径
+        """
+        try:
+            self.device.push(src, dst)
+            return True
+        except Exception as e:
+            print(f"推送文件失败: {str(e)}")
+            return False
+
+    def pull(self, src: str, dst: str) -> bool:
+        """
+        从设备拉取文件
+        
+        Args:
+            src: 设备上的文件路径
+            dst: 本地目标路径
+        """
+        try:
+            self.device.pull(src, dst)
+            return True
+        except Exception as e:
+            print(f"拉取文件失败: {str(e)}")
+            return False
