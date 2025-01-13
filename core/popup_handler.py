@@ -8,6 +8,7 @@ __author__ = "zhangxiaoguo"
 import time
 import functools
 from typing import Callable, Any
+from utils.logger import logger
 
 
 def handle_popup(popup_configs: list = None, timeout: float = 2.0, interval: float = 0.5, retry_times: int = 3):
@@ -41,12 +42,12 @@ def handle_popup(popup_configs: list = None, timeout: float = 2.0, interval: flo
                     while time.time() - start_time < timeout:
                         for config in popup_configs:
                             if self.exists(config["check"]):
-                                print(f"检测到{config['name']}")
+                                logger.info(f"检测到{config['name']}")
                                 self.click(config["check"])
                                 time.sleep(interval)
 
                 except Exception as e:
-                    print(f"处理弹窗时发生错误: {str(e)}")
+                    logger.error(f"处理弹窗时发生错误: {str(e)}")
                     retry_count += 1
                     time.sleep(interval)
                     continue
