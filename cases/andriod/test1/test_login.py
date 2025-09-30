@@ -1,8 +1,4 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-# -*- coding: utf-8 -*-
-
 import allure
 import pytest
 from airtest.core.api import *
@@ -15,17 +11,19 @@ from utils.logger import setup_logger
 logger = setup_logger(__name__)
 
 
-@allure.feature("测试HOME快捷键")
+@allure.feature("测试")
 def test_home(setup_test):
     # if not cli_setup():
     #     auto_setup(__file__, logdir=True, devices=["iOS:///http://127.0.0.1:8100"])
     
     logger.info(f"开始执行用例: {os.path.basename(__file__)}")
     try:
-        keyevent("HOME")
-        touch(Template(r"./images/tpl1735555105458.png", record_pos=(-0.11, 0.214), resolution=(1242, 2688)))
+        keyevent("LOGIN")
+        start_app("com.hkhy.fishingarenaUnityDebugFalseTrueFalse")
+        sleep(20)
+        touch(Template(r"tpl1758093816208.png", record_pos=(-0.002, 0.157), resolution=(2376, 1080)))
         sleep(2)
-        keyevent("HOME")
+        keyevent("LOGIN")
     except Exception as e:
         raise Exception("脚本执行错误，退出")
     finally:

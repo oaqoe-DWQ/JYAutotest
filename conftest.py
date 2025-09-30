@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = "zhangxiaoguo"
 
 import pytest
 import allure
@@ -28,8 +27,19 @@ def setup_test(request):
     # 确保日志目录存在
     os.makedirs(log_dir, exist_ok=True)
     
+    # 根据测试文件路径自动识别平台
+    platform = "iOS"  # 默认平台
+    if "android" in test_file.lower() or "andriod" in test_file.lower():
+        platform = "Android"
+    elif "windows" in test_file.lower() or "win" in test_file.lower():
+        platform = "Windows"
+    elif "macos" in test_file.lower() or "mac" in test_file.lower():
+        platform = "macOS"
+    
+    logger.info(f"自动识别平台: {platform}")
+    
     # 初始化设备
-    DeviceManager.init_device(test_file, log_dir)
+    DeviceManager.init_device(test_file, log_dir, platform)
     
     yield
     

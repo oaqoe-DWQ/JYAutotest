@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = "zhangxiaoguo"
 
 import os
 import logging
@@ -32,11 +31,15 @@ DEVICE_CONFIG = {
         'options': {}
     },
     'ANDROID': {
-        'uri': "Android:///",  # 默认连接
+        'uri': "Android:///",  # 默认连接第一个设备
         'options': {
-            'cap_method': 'JAVACAP',
-            'touch_method': 'ADBTOUCH'
-        }
+            'cap_method': 'JAVACAP',  # 截图方法
+            'touch_method': 'ADBTOUCH',  # 触摸方法
+            'ori_method': 'ADBORI',  # 旋转方法
+            'ime_method': 'ADBIME'  # 输入法方法
+        },
+        # 可以指定特定设备
+        'specific_device': None,  # 例如: "emulator-5554" 或设备序列号
     },
     'WINDOWS': {
         'uri': "Windows:///",
@@ -65,6 +68,6 @@ LOG_CONFIG = {
 
 # 安装包下载地址
 APP_DOWNLOAD_URL = {
-    'IPA_DOWNLOAD_URL': "https://bj-app.vvtechnology.cn/dist/ios/pool/html/",
+    'IPA_DOWNLOAD_URL': "",
     'ANDROID_DOWNLOAD_URL': "",
 }

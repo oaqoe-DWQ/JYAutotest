@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = "zhangxiaoguo"
 
 """
 该文件为项目中所有python文件添加文件头
@@ -9,7 +8,7 @@ __author__ = "zhangxiaoguo"
 import os
 
 def add_header_to_file(file_path):
-    header = '#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n__author__ = "zhangxiaoguo"\n\n'
+    header = '#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n\n'
     
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -18,12 +17,12 @@ def add_header_to_file(file_path):
     lines = content.split('\n')
     existing_headers = []
     
-    for line in lines[:3]:
-        if any(h in line for h in ['#!/usr/bin/env python', '# -*- coding', '__author__']):
+    for line in lines[:2]:
+        if any(h in line for h in ['#!/usr/bin/env python', '# -*- coding']):
             existing_headers.append(line)
     
     # 如果没有完整的头部信息，则添加缺失的部分
-    if len(existing_headers) < 3:
+    if len(existing_headers) < 2:
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(header + content)
         print(f"Added headers to {file_path}")

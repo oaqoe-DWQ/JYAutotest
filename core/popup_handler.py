@@ -3,7 +3,6 @@
 """
 处理各种异常弹窗的装饰器
 """
-__author__ = "zhangxiaoguo"
 
 import time
 import functools

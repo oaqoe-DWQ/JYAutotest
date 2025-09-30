@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = "zhangxiaoguo"
 
 import logging
 from config import LOG_CONFIG

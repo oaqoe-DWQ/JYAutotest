@@ -3,7 +3,6 @@
 """
 封装一些ios平台下Airtest核心api不支持的方法
 """
-__author__ = "zhangxiaoguo"
 
 # TODO: ios17以上、及以下需要分开实现，ios17以下使用aritest原生api
 
@@ -22,10 +21,10 @@ def get_wda_project_path():
     """
     # Airtest IDE 中 WebDriverAgent 的默认路径
     possible_paths = [
-        # os.path.expanduser("~/Library/Application Support/Airtest/iOS/WebDriverAgent"),
-        # os.path.expanduser("~/.airtest/iOS/WebDriverAgent"),
-        # os.path.expanduser("/Users/zhangxiaoguo/Documents/code/WebDriverAgent"),
-        os.path.expanduser("/Users/zhangxiaoguo/Documents/code/iOS-Tagent")
+        os.path.expanduser("~/Library/Application Support/Airtest/iOS/WebDriverAgent"),
+        os.path.expanduser("~/.airtest/iOS/WebDriverAgent"),
+        os.path.expanduser("~/Documents/code/WebDriverAgent"),
+        os.path.expanduser("~/Documents/code/iOS-Tagent")
     ]
 
     for path in possible_paths:

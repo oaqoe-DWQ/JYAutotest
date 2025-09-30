@@ -5,7 +5,6 @@ Airtest UI自动化测试基类
 支持iOS、Android、Windows等多平台
 封装常用的Airtest核心API
 """
-__author__ = "zhangxiaoguo"
 
 import os
 import time
